@@ -113,7 +113,7 @@ mv edgespotter edgespotter-base
 ```bash
 python demo.py
 ```
-More details can be found *[here](Deploy/README.md)*
+More details can be found *[here](Deploy/README.md)*.
 
 ### 5. **Contact** 📞
 If you have any questions, please contact me.
