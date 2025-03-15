@@ -32,34 +32,33 @@ pip install torch==2.0.0+cu118 torchvision==0.15.1+cu118 -f https://download.pyt
 # Install additional dependencies
 pip install -r requirements.txt
 ```
-The installation of Detectron2 can be found at *[Detectron2](https://github.com/facebookresearch/detectron2.)*. You also can run:
+The installation of Detectron2 can be found at *[Detectron2](https://github.com/facebookresearch/detectron2)*. Alternatively, you can run the following:
 ```bash
 git clone https://github.com/facebookresearch/detectron2.git
 cd detectron2 
 pip install -e .
 cd ..
 ```
-After having them, run:
+Once installed, run the following command:
 ```bash
 python setup.py build develop
 ```
 ### 2. **Label generation** 📝
-Here is a python3 example showing how to build a custom dataset for edgespotter training. Before you begin, you need to obtain the data annotations and corresponding images in the format shown in the *[folder](gen_data/datasets_example)*. You can get public datasets for your training *[here](https://github.com/aim-uofa/AdelaiDet/tree/master/datasets)*.
+The following Python 3 example demonstrates how to create a custom dataset for EdgeSpotter training. Before starting, ensure you have the necessary data annotations and corresponding images in the format provided in the *[folder](gen_data/datasets_example)*. Public datasets for training can be found *[here](https://github.com/aim-uofa/AdelaiDet/tree/master/datasets)*.
 
-🔹**Step 1:** Given polygon annotations, generate Catmull-Rom curve annotations. 
+🔹**Step 1:** Generate Catmull-Rom curve annotations based on the given polygon annotations.
 ```bash
 cd gen_data
 python Catrom_curve_generation.py
 ```
-🔹**Step 2:** Given the Catmull-Rom curve annotations, generate the coco-like annotation format for training edgespotter.
+🔹**Step 2:** Convert the Catmull-Rom curve annotations into a COCO-like annotation format for EdgeSpotter training.
 ```bash
 python generate_edgespotter_json.py
 ```
-**Note:** Change the path in the script. If your recognition object does not include curved text, you can set the scaling factor in the script to scale_factor=0.1, otherwise you can default to scale_factor=1.
+**Note:** Modify the path in the script as needed. If your spotting target does not include curved text, set the scaling factor to `scale_factor=0.1`; otherwise, use the default value of `scale_factor=1`.
  
-🖼️ Here are some examples **(the smaller the scale_fator, the tighter the curve)**:
+🖼️ Here are some examples *(a smaller scale factor results in a tighter curve)*:
 
-🔧 **IPM2025 (scale_factor=0.1)**
 <table>
     <tr>
         <td><img src="fig/examples/img_224.jpg" alt="Image 4"></td>
@@ -67,7 +66,8 @@ python generate_edgespotter_json.py
     </tr>
 </table>
 
-🔧 **CTW1500 (scale_factor=1)**
+🔧 **IPM2025** *(scale_factor=0.1)*
+
 <table>
     <tr>
         <td><img src="fig/examples/0003.jpg" alt="Image 1"></td>
@@ -76,8 +76,10 @@ python generate_edgespotter_json.py
     </tr>
 </table>
 
+🔧 **CTW1500** *(scale_factor=1)*
+
 ### 3. **Run** ▶️
-<**Train**>
+🔹<**Train**>
 
 ```bash
 python tools/train_net.py --config-file ${CONFIG_FILE} --num_gpus ${NUMBER}
@@ -88,8 +90,8 @@ python tools/train_net.py --config-file configs/R_50/IPM/finetune_96voc_25maxlen
 ```
 **Note:** After preparing your own dataset, you can either fine-tune it using the *[weights](https://drive.google.com/drive/folders/1-WU9o_SvGrg4e3NOgaHPtdfCpsbqAavC?usp=sharing)* we provide, or re-start your training.
 
-<**Test**>
-Before you get started, you can get a video example *[here](https://drive.google.com/drive/folders/1__TnS2GyYqususQ1y3m30ydBWLeBOPDB?usp=drive_link)*.
+🔹 <**Test**>
+Before getting started, you can obtain a video example *[here](https://drive.google.com/drive/folders/1__TnS2GyYqususQ1y3m30ydBWLeBOPDB?usp=drive_link)*.
 ```bash
 python demo/demo_video.py --config-file ${CONFIG_FILE} --input ${VIDEO} --opts MODEL.WEIGHTS ${WEIGHTS}
 ```
