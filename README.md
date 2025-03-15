@@ -102,7 +102,7 @@ python demo/demo_video.py --config-file configs/R_50/IPM/finetune_96voc_25maxlen
 
 ### 4. **Deployment** 🚀
 
-<**Install**>
+🔹 <**Install**>
 
 ```bash
 cd Deploy
@@ -110,7 +110,7 @@ python setup.py sdist bdist_wheel
 pip install dist/*.whl
 mv edgespotter edgespotter-base
 ```
-<**Demo**>
+🔹 <**Demo**>
 
 ```bash
 python demo.py
