@@ -88,7 +88,7 @@ For example:
 ```bash
 python tools/train_net.py --config-file configs/R_50/IPM/finetune_96voc_25maxlen.yaml --num-gpus 2
 ```
-**Note:** After preparing your own dataset, you can either fine-tune it using the *[weights](https://drive.google.com/drive/folders/1-WU9o_SvGrg4e3NOgaHPtdfCpsbqAavC?usp=sharing)* we provide, or re-start your training.
+> **Note:** After preparing your own dataset, you can either fine-tune it using the *[weights](https://drive.google.com/drive/folders/1-WU9o_SvGrg4e3NOgaHPtdfCpsbqAavC?usp=sharing)* we provide, or re-start your training.
 
 🔹 <**Test**>
 
